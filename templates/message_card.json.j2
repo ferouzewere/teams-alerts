@@ -1,0 +1,29 @@
+{
+  "@type": "MessageCard",
+  "@context": "http://schema.org/extensions",
+  "summary": "{{ title }}",
+  "themeColor": "{% if severity == 'high' %}FF0000{% elif severity == 'medium' %}FFA500{% else %}0076D7{% endif %}",
+  "title": "{{ title }}",
+  "text": "{{ message }}",
+  "hideOriginalBody": true,
+  "sections": [
+    {
+      "activityTitle": "**From:** {{ sender }}",
+      {% if image_url %}
+      "activityImage": "{{ image_url }}",
+      {% endif %}
+      "facts": [
+        {
+          "name": "Severity",
+          "value": "{{ severity | capitalize }}"
+        },
+        {
+          "name": "Timestamp",
+          "value": "{{ timestamp }}"
+        }
+      ],
+      "markdown": true
+    }
+  ],
+  "potentialAction": []
+}
