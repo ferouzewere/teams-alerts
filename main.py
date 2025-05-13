@@ -28,21 +28,20 @@ async def receive_alert(request: Request):
     severity = data.get("severity", "info")
 
     # Render Jinja2 template and convert to JSON
-    # card_payload = template.render(
-    #     title=title,
-    #     message=message,
-    #     severity=severity
-    # )
-
     card_payload = template.render(
-    title=title,
-    message=message,
-    severity=severity,
-    sender=data.get("sender", "Infotrace Analytics"),
-    image_url=("https://media.licdn.com/dms/image/v2/C4D0BAQEZ3zNQuEum7g/company-logo_200_200/company-logo_200_200/0/1630534320267/infotrace_analytics_logo?e=2147483647&v=beta&t=-0G2Nnkwfjz3SZYi0cOZaVF6pJ4ghYqdZRyMI0ZVY-c"),
-    link=data.get("link", None),
-    timestamp=datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S EAT")
-)
+        sender=data.get("sender", "Infotrace Analytics"),
+        title=title,
+        severity=severity,
+        message=message,
+        timestamp=datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S EAT")
+    )
+
+#     card_payload = template.render(
+#     title=title,
+#     message=message,
+#     severity=severity,
+#     image_url=("https://media.licdn.com/dms/image/v2/C4D0BAQEZ3zNQuEum7g/company-logo_200_200/company-logo_200_200/0/1630534320267/infotrace_analytics_logo?e=2147483647&v=beta&t=-0G2Nnkwfjz3SZYi0cOZaVF6pJ4ghYqdZRyMI0ZVY-c"),
+#     link=data.get("link", None),)
     
     json_payload = json.loads(card_payload)
 

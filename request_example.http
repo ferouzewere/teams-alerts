@@ -1,0 +1,11 @@
+POST http://0.0.0.0:8000/webflow-alert
+content-type: application/json
+
+{
+    "title": "Test Alert",
+    "message": "This is a test alert message.",
+    "severity": "high",
+    "sender": "Resource Monitor",
+    "image_url": "https://example.com/images/high_cpu_icon.png",
+    "timestamp": "2025-05-10 14:00 UTC"
+}
